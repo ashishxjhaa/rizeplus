@@ -10,7 +10,7 @@ export default function RoastCard({ roast }: { roast: string }) {
 
     const handleShare = async () => {
         const text = "Just got brutally roasted by AI 💀🔥\nCheck out this tool by @ashishxjha \n\n Check yours at: \n";
-        const url = "https://rizeplus.com";
+        const url = "https://rizeplus.vercel.app";
         
         const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
         window.open(tweetUrl, '_blank');
