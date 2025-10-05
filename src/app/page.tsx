@@ -7,7 +7,7 @@ export default function Home() {
       <div className="mx-2 sm:w-2xl">
         <FileUpload />
       </div>
-      <div className="mt-10 flex flex-col mb-4">
+      <div className="mt-10">
         <button className="border bg-[#E6E6E6] hover:bg-[#F6F6F6] h-9 px-8 text-black tracking-wide rounded-lg font-medium text-sm cursor-pointer">
           Roast Me
         </button>

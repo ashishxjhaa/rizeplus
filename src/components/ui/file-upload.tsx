@@ -72,10 +72,10 @@ export const FileUpload = ({
         </div>
         <div className="flex flex-col items-center justify-center sm:my-10">
           <p className="relative z-20 font-sans font-bold dark:text-neutral-700 text-neutral-100 text-base">
-            Upload file
+            Upload Resume
           </p>
           <p className="relative z-20 font-sans font-normal text-neutral-400 dark:text-neutral-400 text-base text-center px-10 sm:px-0 mt-2">
-            Drag or drop your files here or click to upload
+            Drag or drop your resume here or click to upload
           </p>
           <div className="relative w-full sm:mt-10 max-w-xs sm:max-w-xl mx-auto">
             {files.length > 0 &&
