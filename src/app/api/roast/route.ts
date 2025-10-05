@@ -37,11 +37,13 @@ export async function POST(req: Request) {
 
         // Step 5: Send text to LLM (OpenAI)
         const prompt = 
-        ` You are a brutally honest and witty career coach. 
-        Roast this resume in a humorous, sarcastic, and playful way. 
-        Be funny but not offensive. 
-        Point out mistakes, cringe words, formatting issues, and clichés. 
-        Write it as a **continuous paragraph** like a Twitter roast, not in numbered sections.
+        ` You are a savage roaster. Roast this resume in 150-200 words.
+        Write ONE flowing paragraph - no bullet points, no lists, no bold text, no asterisks.
+        Use simple, casual words like you're texting a friend. No fancy vocabulary.
+        Make fun of 3-4 things: their buzzwords, boring descriptions, bad formatting, or generic phrases.
+        Use Indian references and comparisons that desi people will get (like "busier than a railway station", "more generic than a LinkedIn influencer", "emptier than a movie hall on a weekday", "boring as a 3-hour family function").
+        Keep sentences short and punchy. Make each line land like a joke.
+        End with a fake compliment that's actually an insult.
         Resume: ${resumeText}`;
 
         const completion = await openai.chat.completions.create({
