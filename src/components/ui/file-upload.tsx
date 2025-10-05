@@ -58,7 +58,7 @@ export const FileUpload = ({
       <motion.div
         onClick={handleClick}
         whileHover="animate"
-        className="p-10 group/file block rounded-lg cursor-pointer w-full relative overflow-hidden"
+        className="p-3 sm:p-10 group/file block rounded-lg cursor-pointer w-fit sm:w-full relative overflow-hidden"
       >
         <input
           ref={fileInputRef}
@@ -70,14 +70,14 @@ export const FileUpload = ({
         <div className="absolute inset-0 bg-black border border-dashed border-white/30 rounded-lg">
           
         </div>
-        <div className="flex flex-col items-center justify-center my-10">
+        <div className="flex flex-col items-center justify-center sm:my-10">
           <p className="relative z-20 font-sans font-bold dark:text-neutral-700 text-neutral-100 text-base">
             Upload file
           </p>
-          <p className="relative z-20 font-sans font-normal text-neutral-400 dark:text-neutral-400 text-base mt-2">
+          <p className="relative z-20 font-sans font-normal text-neutral-400 dark:text-neutral-400 text-base text-center px-10 sm:px-0 mt-2">
             Drag or drop your files here or click to upload
           </p>
-          <div className="relative w-full mt-10 max-w-xl mx-auto">
+          <div className="relative w-full sm:mt-10 max-w-xs sm:max-w-xl mx-auto">
             {files.length > 0 &&
               files.map((file, idx) => (
                 <motion.div
@@ -107,7 +107,7 @@ export const FileUpload = ({
                     </motion.p>
                   </div>
 
-                  <div className="flex text-sm md:flex-row flex-col items-start md:items-center w-full mt-2 justify-between dark:text-neutral-600 text-neutral-400">
+                  <div className="flex text-sm md:flex-row flex-col items-start md:items-center w-full mt-2 gap-2 justify-between dark:text-neutral-600 text-neutral-400">
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
