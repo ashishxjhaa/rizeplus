@@ -48,7 +48,7 @@ export default function Home() {
         <FileUpload onChange={(files) => setSelectedFiles(files)} />
       </div>
       <div className="mt-10">
-        <button onClick={handleRoast} disabled={loading} className="flex items-center justify-center gap-2 border bg-[#E6E6E6] hover:bg-[#F6F6F6] h-9 px-8 text-black tracking-wide rounded-lg font-medium text-sm cursor-pointer disabled:opacity-50 disabled:cursor-default">
+        <button onClick={handleRoast} disabled={loading} className="flex items-center justify-center border bg-[#E6E6E6] hover:bg-[#F6F6F6] h-9 px-8 text-black tracking-wide rounded-lg font-medium text-sm cursor-pointer disabled:opacity-50 disabled:cursor-default">
           {loading && <Spinner className="w-4 h-4" />}
           Roast Me
         </button>
