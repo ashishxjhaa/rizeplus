@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import OpenAI from "openai";
 
 // Ensures Node APIs are available for pdf-parse
 export const runtime = "nodejs"; 
@@ -33,11 +33,12 @@ export async function POST(req: Request) {
             );
         }
 
-        const ai = new GoogleGenAI({
-            apiKey: process.env.GOOGLE_API_KEY!,
+        const client = new OpenAI({
+            apiKey: process.env.DEEPSEEK_API_KEY!,
+            baseURL: "https://api.deepseek.com",
         });
 
-        // Step 5: Send text to LLM (OpenAI)
+        // Step 5: Send text to Gemini
         const prompt = 
         ` You are a savage roaster. Roast this resume in 150-200 words.
         Write ONE flowing paragraph - no bullet points, no lists, no bold text, no asterisks.
@@ -48,12 +49,17 @@ export async function POST(req: Request) {
         End with a fake compliment that's actually an insult.
         Resume: ${resumeText}`;
 
-        const response = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
-            contents: prompt,
+        const completion = await client.chat.completions.create({
+            model: "deepseek-chat",
+            messages: [
+                {
+                    role: "user",
+                    content: prompt,
+                },
+            ],
         });
 
-        const roast = response.text || "No roast generated.";
+        const roast = completion.choices[0].message.content ?? "No roast generated."
 
 
         // Step 6: Return roast text
