@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import OpenAI from "openai";
+import { GoogleGenAI } from "@google/genai";
 
 // Ensures Node APIs are available for pdf-parse
 export const runtime = "nodejs"; 
@@ -33,7 +33,9 @@ export async function POST(req: Request) {
             );
         }
 
-        const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+        const ai = new GoogleGenAI({
+            apiKey: process.env.GOOGLE_API_KEY!,
+        });
 
         // Step 5: Send text to LLM (OpenAI)
         const prompt = 
@@ -46,14 +48,13 @@ export async function POST(req: Request) {
         End with a fake compliment that's actually an insult.
         Resume: ${resumeText}`;
 
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini", // fast + cost-efficient model
-            messages: [
-                { role: "user", content: prompt }
-            ],
+        const response = await ai.models.generateContent({
+            model: "gemini-2.5-flash",
+            contents: prompt,
         });
 
-        const roast = completion.choices[0].message?.content || "No roast generated.";
+        const roast = response.text || "No roast generated.";
+
 
         // Step 6: Return roast text
         return NextResponse.json({ roast });
